@@ -80,6 +80,16 @@ namespace AdvancedAjax.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        public IActionResult Delete(City City)
+        {
+            _context.Attach(City);
+            _context.Entry(City).State = EntityState.Deleted;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
         private List<SelectListItem> GetCountries()
         {
             var lstCountries = new List<SelectListItem>();

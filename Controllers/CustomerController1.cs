@@ -91,7 +91,6 @@ namespace AdvancedAjax.Controllers
         {
             Customer customer = _context.Customers.Where(c => c.Id == Id).FirstOrDefault();
             return View(customer);
-
         }
 
         [ValidateAntiForgeryToken]
@@ -100,8 +99,6 @@ namespace AdvancedAjax.Controllers
         {
             _context.Attach(customer);
             _context.Entry(customer).State = EntityState.Deleted;
-            _context.Entry(customer.City).State = EntityState.Detached;
-            _context.Entry(customer.City.Country).State = EntityState.Detached;
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
