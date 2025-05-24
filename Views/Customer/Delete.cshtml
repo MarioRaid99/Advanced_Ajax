@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-            <input asp-for="LastName" class="form-control form-control-plaintext" readonly />
+                <input asp-for="LastName" class="form-control form-control-plaintext" readonly />
             </div>
             <div class="form-group">
                 <label asp-for="EmailId" class="control-label"></label>
@@ -34,11 +34,10 @@
                 <label asp-for="CountryId" class="control-label"></label>
                 <input asp-for="@Model.City.Country.Name" class="form-control form-control-plaintext" readonly />
             </div>
-                <div class="form-group">
-                    <label asp-for="CityId" class="control-label"></label>
-                    <input asp-for="@Model.City.Name" class="form-control form-control-plaintext" readonly />
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <input asp-for="@Model.City.Name" class="form-control form-control-plaintext" readonly />
             </div>
-
 
 
             <div class="col-md-12 btn-group pb-2">
@@ -53,7 +52,6 @@
 
             </div>
             <div class="form-group">
-                
                 <input type="submit" value="Delete" class="btn btn-primary" />
             </div>
 
@@ -66,7 +64,7 @@
             </div>
 
 
-            </form>
+        </form>
 
 
 

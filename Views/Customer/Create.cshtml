@@ -58,9 +58,7 @@
                     onchange="FillCities(this,'lstCity');"></select>
                 </div>
             <div class="col-1 mt-4">
-                    <button class="btn btn-success" onclick="ShowCountryCreateModal();">
-                        +
-                    </button>
+                    <button class="btn btn-success" onclick="showCountryCreateModal();">+</button>
               </div>
             </div>
 
@@ -108,25 +106,32 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
+            function showCountryCreateModal() {
+                $.get("/country/CreateModalForm", function (response) {
+                    $('#DivCreateDialog').html(response);
+                    var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('DivCreateDialogHolder'));
+                    modal.show();
+                });
+            }
 
-    function ShowCountryCreateModal() {
-   $.ajax(
-       {
-           url: "/country/CreateModalForm",
-           type: 'get',
-           sucess: function (response) {
-               $("DivCreateDialog").html(response);
-               ShowCreateModalForm();
-           }
-       });
-    return;
-}
- 
+            function showCityCreateModal() {
+            var lstCountryCtrl = document.getElementById('lstCountryId');
+            var countryId = lstCountryCtrl?.options[lstCountryCtrl.selectedIndex]?.value;
 
+            $.get("/city/CreateModalForm?countryId=" + countryId, function (response) {
+                $('#DivCreateDialog').html(response);
+
+                var modalElement = document.getElementById('DivCreateDialogHolder');
+                var modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+                modal.show();
+            });
+        }
 
 </script>
 }

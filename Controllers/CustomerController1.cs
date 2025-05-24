@@ -91,6 +91,7 @@ namespace AdvancedAjax.Controllers
         {
             Customer customer = _context.Customers.Where(c => c.Id == Id).FirstOrDefault();
             return View(customer);
+
         }
 
         [ValidateAntiForgeryToken]
